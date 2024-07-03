@@ -1,10 +1,7 @@
+This is my Level 1 Project as a HNG Intern
+
 Automating Linux User Management with a Bash Script
-#
-devops
-#
-linux
-#
-bash
+
 Managing user accounts in a Linux environment can be a tedious and error-prone process, especially when dealing with a large number of users. As a DevOps engineer, ensuring that each user is created with the correct permissions, groups, and secure credentials is crucial for maintaining system security and efficiency.
 As part of HNG Internship, was assigned a real-world scenario of writing a Bash script designed to automate the process of user and group creation, home directory setup, and password management. This script not only simplifies the user management process but also ensures consistency and security across the system.
 
@@ -15,14 +12,13 @@ In this technical article, we will walk through the process of creating and mana
 bash
 Copy code
 #!/bin/bash
-
 # Check if the script is run as root
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
-2. Validate Input File: Checks if the input file containing user details is provided.
 
+2. Validate Input File: Checks if the input file containing user details is provided
 # Check if the input file is provided
 if [ -z "$1" ]; then
     echo "Usage: $0 <user_list_file>"
@@ -30,6 +26,7 @@ if [ -z "$1" ]; then
 fi
 
 USER_LIST_FILE=$1
+
 3. Initialize Log and Password Files: Prepares the log file (/var/log/user_management.log) and the password file (/var/secure/user_passwords.csv).
 # Log file and password file paths
 LOG_FILE="/var/log/user_management.log"
@@ -42,15 +39,21 @@ chmod 700 /var/secure
 # Create or clear log and password files
 > $LOG_FILE
 > $PASSWORD_FILE
+
+
 4. Generate Random Passwords: Defines a function to generate random passwords.
 # Function to generate random password
 generate_password() {
     tr -dc A-Za-z0-9 </dev/urandom | head -c 12
 }
+
+
 5. Process User List: Reads the input file line by line, processes each username and associated groups
 # Read the user list file and process each line
 while IFS=';' read -r username groups; do
     username=$(echo "$username" | xargs) # Trim whitespace
+
+    
 6. Create Users and Groups: Creates users, personal groups, and additional groups as specified.
   # Create the user and personal group
     if id "$username" &>/dev/null; then
@@ -59,12 +62,16 @@ while IFS=';' read -r username groups; do
         useradd -m -s /bin/bash "$username" -g "$username"
         echo "Created user $username and personal group $username" | tee -a $LOG_FILE
     fi
+
+    
 7. Set Home Directory: Sets up the home directory with appropriate permissions and ownership.
 # Set up home directory
     HOME_DIR="/home/$username"
     chmod 755 "$HOME_DIR"
     chown "$username:$username" "$HOME_DIR"
     echo "Set up home directory for $username" | tee -a $LOG_FILE
+
+    
 8. Assign Groups and Passwords: Adds users to additional groups and sets random passwords.
   # Create and add user to additional groups
     IFS=',' read -ra ADDITIONAL_GROUPS <<< "$groups"
@@ -85,6 +92,8 @@ while IFS=';' read -r username groups; do
     echo "Set password for $username" | tee -a $LOG_FILE
 
 done < "$USER_LIST_FILE"
+
+
 9. Log Actions and Secure Password File: Logs all actions and ensures the password file is securely stored.
 # Secure the password file
 chmod 600 $PASSWORD_FILE
@@ -94,10 +103,11 @@ echo "User creation process completed" | tee -a $LOG_FILE
 
 
 Key Points
-•** User and Group Creation:** The script ensures each user has a personal group with the same name. It handles the creation of multiple groups and adds users to these groups.
-•** Home Directory Setup*: Home directories are created with appropriate permissions and ownership.
-•* Password Generation and Security:** Random passwords are generated and stored securely. Only the file owner can read the password file.
-• Logging: All actions are logged for auditing purposes.
+•User and Group Creation:The script ensures each user has a personal group with the same name. It handles the creation of multiple groups and adds users to these groups.
+•Home Directory Setup: Home directories are created with appropriate permissions and ownership.
+•Password Generation and Security: Random passwords are generated and stored securely. Only the file owner can read the password file.
+• Logging: All actions are logged for auditing purposes
+
 This script simplifies the task of user management in a Linux environment, ensuring consistency and security.
 Learn more about the HNG Internship and opportunities to grow as a developer:
 • HNG Internship
