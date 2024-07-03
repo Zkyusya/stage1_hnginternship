@@ -1,4 +1,4 @@
-This is my Level 1 Project as a HNG Intern
+This is my Level 1 Project as a HNG Intern. Use create_users.sh file in this repo. You will need a user_list.txt file to execute the script.
 
 **Automating Linux User Management with a Bash Script**
 
