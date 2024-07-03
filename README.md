@@ -91,6 +91,8 @@ chmod 600 $PASSWORD_FILE
 echo "Password file stored at $PASSWORD_FILE with secure permissions" | tee -a $LOG_FILE
 
 echo "User creation process completed" | tee -a $LOG_FILE
+
+
 Key Points
 •** User and Group Creation:** The script ensures each user has a personal group with the same name. It handles the creation of multiple groups and adds users to these groups.
 •** Home Directory Setup*: Home directories are created with appropriate permissions and ownership.
