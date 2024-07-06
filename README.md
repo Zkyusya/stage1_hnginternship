@@ -9,6 +9,6 @@ Additionally, it reads a text file containing usernames and group names, then;
 
 • Logging: Logs All actions in `var/log/user_management.log` file for auditing purposes
 
- **Stores **all the users and their generated passwords in `/var/secure/user_passwords.txt` file
+ **Password and User Management:** Stores all the users and their generated passwords in `/var/secure/user_passwords.txt` file
 
 
