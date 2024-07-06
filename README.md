@@ -14,7 +14,8 @@ Additionally, it reads a text file containing usernames and group names, then;
  To run this bash script, your terminal should be run as a root user.
 
  Navigate to the directory containing your `create_user.sh` file and the `text_file.txt` file.
+ 
 
- Run the command `./create_user.sh ./text_file.sh`
+ Then Run the command `./create_user.sh ./text_file.sh`
 
 
