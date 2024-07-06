@@ -1,14 +1,14 @@
 This repo contains a Bash Script for creating and managing Linux users. 
-Additionally, it reads a text file containing usernames and group names, creates the users and groups, sets up home directories, generates random passwords, and logs all actions. The generated passwords are securely stored in a protected file.
+Additionally, it reads a text file containing usernames and group names, then; 
 
-Key Points 
-•User and Group Creation:The script ensures each user has a personal group with the same name. It handles the creation of multiple groups and adds users to these groups.
+•User and Group Creation:Ensures each user has a personal group with the same name handling creation of multiple groups and adds users to these groups.
 
-•Home Directory Setup: Home directories are created with appropriate permissions and ownership
+•Home Directory Setup: Creates home directories with appropriate permissions and ownership
 
-•Password Generation and Security: Random passwords are generated and stored securely. Only the file owner can read the password file.
+•Password Generation and Security: Generates random passwords and stored securely. Only the file owner can read the password file.
 
-• Logging: All actions are logged in `var/log/user_management.log` file for auditing purposes
- Stores all the users and their generated passwords in `/var/secure/user_passwords.txt` file
+• Logging: Logs All actions in `var/log/user_management.log` file for auditing purposes
+
+ **Stores **all the users and their generated passwords in `/var/secure/user_passwords.txt` file
 
 
