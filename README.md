@@ -1,5 +1,4 @@
-This repo contains a Bash Script for creating and managing Linux users. 
-Additionally, it reads a text file containing usernames and group names, then; 
+This repo contains a Bash Script for creating and managing Linux users where it reads a text file containing usernames and group names, then; 
 
 **•User and Group Creation:** Ensures each user has a personal group with the same name handling creation of multiple groups and adds users to these groups.
 
